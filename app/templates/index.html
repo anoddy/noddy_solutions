@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ company.name }} — {{ company.tagline }}</title>
+  <meta name="description" content="{{ company.name }}: {{ company.tagline }}">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">{{ company.name }}</a>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-small">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>{{ company.tagline }}</h1>
+        <p>We design and operate highly available, globally distributed platforms so your
+           customers get a fast experience wherever they are.</p>
+        <a href="#contact" class="btn">Start a project</a>
+      </div>
+    </section>
+
+    <section id="services" class="container">
+      <h2>What we do</h2>
+      <div class="grid">
+        {% for s in services %}
+        <article class="card">
+          <div class="icon" aria-hidden="true">{{ s.icon }}</div>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container stats">
+        <div><strong>Multi-AZ</strong><span>Planned Availability</span></div>
+        <div><strong>Global</strong><span>Planned Edge Caching</span></div>
+        <div><strong>On demand</strong><span>Planned Backend Scaling</span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h2>Let's talk</h2>
+      <p>Tell us about your next project.</p>
+      <a class="btn" href="mailto:{{ company.email }}">{{ company.email }}</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© {{ year }} {{ company.name }}. FastAPI demo website.</div>
+  </footer>
+</body>
+</html>
